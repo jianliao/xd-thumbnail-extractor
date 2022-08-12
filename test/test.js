@@ -1,7 +1,6 @@
-const test = require('ava');
-const fs = require('fs');
-const { async } = require('node-stream-zip');
-const { extractThumbnail, extractThumbnailToStream, extractThumbnailToBuffer } = require('..');
+import test from 'ava';
+import fs from 'fs';
+import { extractThumbnail, extractThumbnailToStream, extractThumbnailToBuffer } from '../index.js';
 
 fs.mkdirSync('./test/fixtures/target');
 

@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 'use strict';
 
-const { Command } = require('commander');
-const ora = require('ora');
-const { extractThumbnail } = require('../index');
+import { Command } from 'commander';
+import ora from 'ora';
+import { extractThumbnail } from '../index';
 
-const pkg = require('../package.json');
+import pkg from '../package.json' assert { type: 'json' };
 
 const program = new Command(pkg.name);
 

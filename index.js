@@ -1,12 +1,12 @@
 'use strict';
-const StreamZip = require('node-stream-zip');
-const path = require('path');
-const isStream = require('is-stream');
-const unzipStream = require('unzip-stream');
-const streamToArray = require('stream-to-array')
+import StreamZip from 'node-stream-zip';
+import path from 'path';
+import { isStream } from 'is-stream';
+import unzipStream from 'unzip-stream';
+import streamToArray from 'stream-to-array'
 const DEFAULT_XD_THUMBNAIL_NAME = 'thumbnail.png';
 
-exports.extractThumbnail = async (file, { filename, filepath } = {}) => {
+async function extractThumbnail(file, { filename, filepath } = {}) {
   if (!file) {
     console.error('Missing target XD file/stream');
     return;
@@ -18,7 +18,7 @@ exports.extractThumbnail = async (file, { filename, filepath } = {}) => {
   await XDZip.close();
 };
 
-exports.extractThumbnailToStream = async (readableStream, writableStream) => {
+async function extractThumbnailToStream(readableStream, writableStream) {
   if (!isStream(readableStream)) {
     console.error('Only accept NodeJS.ReadableStream for the first argument');
     return;
@@ -49,7 +49,7 @@ exports.extractThumbnailToStream = async (readableStream, writableStream) => {
   });
 }
 
-exports.extractThumbnailToBuffer = async readableStream => {
+async function extractThumbnailToBuffer(readableStream) {
   if (!isStream(readableStream)) {
     console.error('Only accept NodeJS.ReadableStream for the first argument');
     return;
@@ -72,3 +72,5 @@ exports.extractThumbnailToBuffer = async readableStream => {
       });
   });
 }
+
+export { extractThumbnail, extractThumbnailToStream, extractThumbnailToBuffer }
