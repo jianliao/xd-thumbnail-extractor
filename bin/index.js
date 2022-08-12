@@ -3,7 +3,7 @@
 
 import { Command } from 'commander';
 import ora from 'ora';
-import { extractThumbnail } from '../index';
+import { extractThumbnail } from '../index.js';
 
 import pkg from '../package.json' assert { type: 'json' };
 
